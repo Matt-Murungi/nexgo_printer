@@ -1,6 +1,6 @@
 # n3_pos_print_plugin
 
-This flutter plugin enables POS terminal to print
+This plugin allows you to print receipts using a NexGo POS Terminal.
 
 ## Getting Started
 
