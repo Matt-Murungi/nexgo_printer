@@ -1,0 +1,48 @@
+group 'com.example.smart_pos_printer'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.4'
+
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+        flatDir {
+            dirs project(':smart_pos_printer').file('libs')
+
+        }
+
+    }
+}
+
+
+
+apply plugin: 'com.android.library'
+
+dependencies {
+    implementation(name: 'nexgo-smartpos-sdk-v3.02.001_20201028', ext: 'aar')
+
+    implementation files('libs/iso8583_V1.0.jar')
+    implementation files('libs/spdh_V1.6.jar')
+}
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 16
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+}
