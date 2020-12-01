@@ -16,6 +16,10 @@ rootProject.allprojects {
     repositories {
         google()
         jcenter()
+        flatDir {
+            dirs project(':n3_pos_print_plugin').file('libs')
+
+        }
     }
 }
 
@@ -25,9 +29,30 @@ android {
     compileSdkVersion 29
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 19
     }
     lintOptions {
         disable 'InvalidPackage'
     }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+//    compile 'com.android.support:appcompat-v7:23.3.0'
+//    compile 'com.android.support:gridlayout-v7:23.3.0'
+    compile 'com.github.tony19:logback-android-core:1.1.1-4'
+    compile 'com.github.tony19:logback-android-classic:1.1.1-4'
+    compile 'org.slf4j:slf4j-api:1.7.12'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.2.3'
+
+    compile(name: 'nexgo-smartpos-sdk-v3.02.001_20201028', ext: 'aar')
+
+
+
+    compile 'com.google.code.gson:gson:2.8.0'
+
+    implementation files('libs/iso8583_V1.0.jar')
+    implementation files('libs/spdh_V1.6.jar')
 }
